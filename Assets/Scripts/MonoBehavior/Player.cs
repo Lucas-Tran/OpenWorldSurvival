@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour, IItemParent {
 
+
     public event EventHandler OnHit;
 
     public static Player Instance { get; private set; }
@@ -14,11 +15,11 @@ public class Player : MonoBehaviour, IItemParent {
         public IInteractable selectedObject;
     }
 
-
     [SerializeField] private float moveSpeed;
     [SerializeField] private Transform playerHandPointTransform;
 
     private Item heldItem;
+    private int heldItemInventoryIndex;
 
     private Vector3 direction;
 
@@ -42,6 +43,12 @@ public class Player : MonoBehaviour, IItemParent {
     private void Update() {
         HandleInteractions();
         HandleMovement();
+
+        for (int i = 0; i < 10; i++) {
+            if (Input.GetKey(i.ToString())) {
+                SetHeldItemInventoryIndex(i);
+            }
+        }
     }
 
     private void HandleInteractions() {
@@ -58,7 +65,7 @@ public class Player : MonoBehaviour, IItemParent {
     }
 
     private void HandleMovement() {
-        Vector2 inputVector = GameInput.Instance.GetInputVectorNormalized();
+        Vector2 inputVector = GameInput.Instance.GetMoveVectorNormalized();
         if (inputVector != Vector2.zero) {
 
             Vector3 moveDirection = new Vector3(inputVector.x, 0, inputVector.y);
@@ -142,4 +149,20 @@ public class Player : MonoBehaviour, IItemParent {
     public bool HasItemWithCatagory(ItemSO.ItemCatagories itemCatagory) {
         return HasItem() && GetItem().GetItemSO().catagory == itemCatagory;
     }
+
+    public void SetHeldItemInventoryIndex(int heldItemInventoryIndex) {
+        this.heldItemInventoryIndex = heldItemInventoryIndex;
+        if (HasItem()) {
+            heldItem.DestroySelf();
+        }
+
+        ItemSO itemSO = InventoryManager.Instance.GetItemSOArray()[heldItemInventoryIndex];
+
+        if (itemSO != null) {
+            Transform newHeldItem = Instantiate(itemSO.prefab);
+            newHeldItem.GetComponent<Item>().SetItemParent(this);
+        }
+    }
+
+
 }

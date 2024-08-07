@@ -32,4 +32,10 @@ public class Item : MonoBehaviour {
         return itemParent;
     }
 
+    public void DestroySelf() {
+        itemParent.ClearItem();
+        Destroy(gameObject);
+    }
+
+
 }

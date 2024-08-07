@@ -10,12 +10,10 @@ public class Chest : MonoBehaviour, IInteractable {
     public event EventHandler OnInteract;
 
     public void Interact(Player player) {
-        if (!player.HasItem()) {
+        if (InventoryManager.Instance.TryAddItem(itemSO, out int itemSOIndex)) {
             OnInteract?.Invoke(this, EventArgs.Empty);
 
-            Transform itemTransform = Instantiate(itemSO.prefab);
-            itemTransform.GetComponent<Item>().SetItemParent(player);
-            InventoryUI.Instance.TryAddItem(itemSO);
+            player.SetHeldItemInventoryIndex(itemSOIndex);
         }
     }
 

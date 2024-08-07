@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,37 +11,26 @@ public class InventoryUI : MonoBehaviour {
     [SerializeField] private Transform container;
     [SerializeField] private Transform inventorySlotTemplate;
 
-    private bool inInventory = false;
-    private ItemSO[] itemSOArray;
-    private int itemsCount;
-
-    private void Awake() {
-        Instance = this;
-
-        int inventorySlots = 10;
-
-        itemSOArray = new ItemSO[inventorySlots];
-
-        UpdateVisual();
-    }
 
     private void Start() {
-        GameInput.Instance.OnToggleInventory += GameInput_OnToggleInventory;
+        InventoryManager.Instance.OnShowInventory += InventoryManager_OnShowInventory;
+        InventoryManager.Instance.OnHideInventory += InventoryManager_OnHideInventory;
+        InventoryManager.Instance.OnItemAdded += InventoryManager_OnItemAdded;
 
+        UpdateVisual();
         Hide();
     }
 
-    private void GameInput_OnToggleInventory(object sender, System.EventArgs e) {
-        ToggleInventory();
+    private void InventoryManager_OnItemAdded(object sender, EventArgs e) {
+        UpdateVisual();
     }
 
-    private void ToggleInventory() {
-        inInventory = !inInventory;
-        if (inInventory) {
-            Show();
-        } else {
-            Hide();
-        }
+    private void InventoryManager_OnHideInventory(object sender, EventArgs e) {
+        Hide();
+    }
+
+    private void InventoryManager_OnShowInventory(object sender, EventArgs e) {
+        Show();
     }
 
     private void Show() {
@@ -57,21 +47,10 @@ public class InventoryUI : MonoBehaviour {
             Destroy(child.gameObject);
         }
 
-        for (int i = 0; i < itemSOArray.Length; i++) {
+        for (int i = 0; i < InventoryManager.Instance.GetItemSOArray().Length; i++) {
             Transform inventorySlot = Instantiate(inventorySlotTemplate, container);
             inventorySlot.gameObject.SetActive(true);
-            inventorySlot.GetComponent<InventorySingleUI>().SetIconItemSO(itemSOArray[i]);
-        }
-    }
-
-    public bool TryAddItem(ItemSO itemSO) {
-        if (itemsCount < itemSOArray.Length) {
-            itemSOArray[itemsCount] = itemSO;
-            itemsCount += 1;
-            UpdateVisual();
-            return true;
-        } else {
-            return false;
+            inventorySlot.GetComponent<InventorySingleUI>().SetIconItemSO(InventoryManager.Instance.GetItemSOArray()[i]);
         }
     }
 

@@ -30,10 +30,17 @@ public class GameInput : MonoBehaviour {
         OnInteract?.Invoke(this, EventArgs.Empty);
     }
 
-    public Vector2 GetInputVectorNormalized() {
-
+    public Vector2 GetMoveVectorNormalized() {
         Vector2 inputVector = inputActions.Player.Walk.ReadValue<Vector2>();
 
         return inputVector;
     }
+
+    public float GetRotateAxis() {
+        float inputAxis = inputActions.Player.Rotate.ReadValue<float>();
+
+        return inputAxis;
+    }
+
+
 }
