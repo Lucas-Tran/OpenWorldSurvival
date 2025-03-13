@@ -18,7 +18,7 @@
                     "name": "Interact",
                     "type": "Button",
                     "id": "5236686f-e3fa-415d-8047-f9e0f105bc7b",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -100,6 +100,17 @@
                 },
                 {
                     "name": "",
+                    "id": "fd899c69-a57c-4751-904c-ee7def553dd8",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Walk",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "ffa2f871-3716-4e36-8e46-881b2239b49b",
                     "path": "<Keyboard>/e",
                     "interactions": "",
@@ -111,8 +122,30 @@
                 },
                 {
                     "name": "",
+                    "id": "d1ae7145-ac91-4373-a968-b5974d923de6",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "8c256922-7cfc-4c26-a91e-a9b779b0eb44",
                     "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleInventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7cb8cd03-ea91-4be9-b0e9-014cc6828c21",
+                    "path": "<Gamepad>/dpad/up",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -146,6 +179,39 @@
                     "name": "positive",
                     "id": "f88fb636-3785-4c6b-99a0-8e8a6a37eb58",
                     "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Gampad Arrow Buttons",
+                    "id": "0591e088-2b13-4c6c-9e02-b9096078500f",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotate",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "2f2bf3f4-cd4d-4ee9-9553-5315839ab111",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "441fce4b-5d10-4390-9025-145fd84fe057",
+                    "path": "<Gamepad>/dpad/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

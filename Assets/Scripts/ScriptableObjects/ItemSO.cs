@@ -7,7 +7,8 @@ public class ItemSO : ScriptableObject {
 
     public enum ItemCatagories {
         Axe,
-        Pickaxe
+        Pickaxe,
+        Material
     }
 
     public Transform prefab;

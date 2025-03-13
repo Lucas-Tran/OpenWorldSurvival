@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 6967663671566216121, guid: abe53dc9e3f104deea3a209cc5b01937, type: 3}
   catagory: 1
-  iconSprite: {fileID: 21300000, guid: dee0a94aa3bcc4f0392bb094160f1b21, type: 3}
+  iconSprite: {fileID: 21300000, guid: 7364131f51938ca41a52910fa095c2d1, type: 3}
   itemName: Pickaxe
