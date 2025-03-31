@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Axe
   m_EditorClassIdentifier: 
   prefab: {fileID: 2683957104432884015, guid: 0f9254addb3994c0b9104cb753b127a1, type: 3}
+  droppedPrefab: {fileID: 5505829632261275982, guid: a31006b36d6b2df4eacdb443542248d6,
+    type: 3}
   catagory: 0
   iconSprite: {fileID: 21300000, guid: b4e2cd487154e4e4a9f5eb1204d367c2, type: 3}
   itemName: Axe

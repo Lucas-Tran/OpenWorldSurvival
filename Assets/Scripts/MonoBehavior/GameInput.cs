@@ -36,8 +36,8 @@ public class GameInput : MonoBehaviour {
         return inputVector;
     }
 
-    public float GetRotateAxis() {
-        float inputAxis = inputActions.Player.Rotate.ReadValue<float>();
+    public Vector2 GetLook() {
+        Vector2 inputAxis = inputActions.Player.Look.ReadValue<Vector2>();
 
         return inputAxis;
     }

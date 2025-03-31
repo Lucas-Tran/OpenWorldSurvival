@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Wood
   m_EditorClassIdentifier: 
   prefab: {fileID: 2231977854583429669, guid: 6ff4ce87200c95746973a5201e1f417d, type: 3}
+  droppedPrefab: {fileID: 3467249110238643734, guid: 89a7f62e86928a44589d19843551a0c5,
+    type: 3}
   catagory: 2
   iconSprite: {fileID: 21300000, guid: a9f920763267b1349b4622a446532d8f, type: 3}
   itemName: Wood

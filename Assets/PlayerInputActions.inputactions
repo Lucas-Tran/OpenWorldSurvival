@@ -27,17 +27,17 @@
                     "name": "ToggleInventory",
                     "type": "Button",
                     "id": "24e53c2f-0f6f-4abc-bd26-d4947f8356f6",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Rotate",
+                    "name": "Look",
                     "type": "Value",
-                    "id": "8a453b0c-ff24-4213-bd2e-c5372507e52a",
-                    "expectedControlType": "Axis",
-                    "processors": "",
+                    "id": "5927b941-6127-42fe-ab36-eb82fad8a0d0",
+                    "expectedControlType": "Vector2",
+                    "processors": "InvertVector2(invertX=false)",
                     "interactions": "",
                     "initialStateCheck": true
                 }
@@ -154,70 +154,26 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "Arrow Keys",
-                    "id": "32208ca0-2a29-4dd7-87d2-04aea6276018",
-                    "path": "1DAxis",
+                    "name": "",
+                    "id": "23fdfe29-e307-4442-b33c-548fed3408ea",
+                    "path": "<Mouse>/delta",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Rotate",
-                    "isComposite": true,
+                    "action": "Look",
+                    "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "negative",
-                    "id": "beccdfcf-5524-4cbb-bbaa-0fb2b7cf2b45",
-                    "path": "<Keyboard>/leftArrow",
+                    "name": "",
+                    "id": "b31bb683-e3d7-4542-96d7-7d9e59257075",
+                    "path": "<Gamepad>/rightStick",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "ScaleVector2(x=100,y=100)",
                     "groups": "",
-                    "action": "Rotate",
+                    "action": "Look",
                     "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "f88fb636-3785-4c6b-99a0-8e8a6a37eb58",
-                    "path": "<Keyboard>/rightArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Rotate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Gampad Arrow Buttons",
-                    "id": "0591e088-2b13-4c6c-9e02-b9096078500f",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Rotate",
-                    "isComposite": true,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "2f2bf3f4-cd4d-4ee9-9553-5315839ab111",
-                    "path": "<Gamepad>/dpad/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Rotate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "441fce4b-5d10-4390-9025-145fd84fe057",
-                    "path": "<Gamepad>/dpad/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Rotate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 }
             ]
         }

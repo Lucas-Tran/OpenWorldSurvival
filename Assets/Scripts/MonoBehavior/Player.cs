@@ -21,13 +21,10 @@ public class Player : MonoBehaviour, IItemParent {
     private Item heldItem;
     private int heldItemInventoryIndex;
 
-    private Vector3 direction;
-
     private IInteractable selectedObject;
 
     private void Awake() {
         Instance = this;
-        direction = transform.forward;
     }
 
     private void Start() {
@@ -53,7 +50,7 @@ public class Player : MonoBehaviour, IItemParent {
 
     private void HandleInteractions() {
         float interactDistance = 2f;
-        if (Physics.Raycast(transform.position, direction, out RaycastHit raycastHit, interactDistance)) {
+        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit raycastHit, interactDistance)) {
             if (raycastHit.transform.TryGetComponent<IInteractable>(out IInteractable newSelectedObject)) {
                 SetSelectedObject(newSelectedObject);
             } else {
@@ -68,8 +65,7 @@ public class Player : MonoBehaviour, IItemParent {
         Vector2 inputVector = GameInput.Instance.GetMoveVectorNormalized();
         if (inputVector != Vector2.zero) {
 
-            Vector3 moveDirection = new Vector3(inputVector.x, 0, inputVector.y);
-            direction = moveDirection;
+            Vector3 moveDirection = transform.right * inputVector.x + transform.forward * inputVector.y;
 
 
             float moveDistance = moveSpeed * Time.deltaTime;
@@ -82,7 +78,7 @@ public class Player : MonoBehaviour, IItemParent {
                 // Cannot move in all directions
 
                 // Attempt only X movement
-                Vector3 moveDirectionX = new Vector3(inputVector.x, 0, 0);
+                Vector3 moveDirectionX = new Vector3(moveDirection.x, 0, 0);
                 canMove = !Physics.CapsuleCast(transform.position, transform.position + (playerHeight * Vector3.up), playerRadius, moveDirectionX, moveDistance);
                 if (canMove) {
                     // Can move in the X direction
@@ -109,8 +105,6 @@ public class Player : MonoBehaviour, IItemParent {
                 transform.position += moveDirection * moveDistance;
             }
         }
-        float rotateSpeed = 2f;
-        transform.forward = Vector3.Slerp(transform.forward, direction, rotateSpeed * Time.deltaTime);
     }
 
     private void SetSelectedObject(IInteractable selectedObject) {

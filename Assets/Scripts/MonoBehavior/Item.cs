@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item : MonoBehaviour {
+public class Item : MonoBehaviour, IInteractable {
 
 
     [SerializeField] private ItemSO itemSO;
@@ -37,5 +37,8 @@ public class Item : MonoBehaviour {
         Destroy(gameObject);
     }
 
-
+   public void Interact(Player player) {
+      InventoryManager.Instance.TryAddItem(itemSO, out int itemSOIndex);
+      Destroy(gameObject);
+   }
 }
